@@ -1,9 +1,9 @@
 from django.core.files.uploadedfile import UploadedFile
 from django.utils.datastructures import MultiValueDict
 from django.utils.encoding import smart_str
-from django.utils.functional import lazy_property
+from formwizard.utils import lazy_property
 
-from django.contrib.formtools.wizard.storage.exceptions import NoFileStorageConfigured
+from formwizard.storage.exceptions import NoFileStorageConfigured
 
 
 class BaseStorage(object):

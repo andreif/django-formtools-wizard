@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 
-from django.contrib.formtools.utils import form_hmac
+#from django.contrib.formtools.utils import form_hmac
 
 class FormWizard(object):
     # The HTML (and POST data) field name for the "step" variable.

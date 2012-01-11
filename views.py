@@ -8,9 +8,9 @@ from django.views.generic import TemplateView
 from django.utils.datastructures import SortedDict
 from django.utils.decorators import classonlymethod
 
-from django.contrib.formtools.wizard.storage import get_storage
-from django.contrib.formtools.wizard.storage.exceptions import NoFileStorageConfigured
-from django.contrib.formtools.wizard.forms import ManagementForm
+from formwizard.storage import get_storage
+from formwizard.storage.exceptions import NoFileStorageConfigured
+from formwizard.forms import ManagementForm
 
 
 def normalize_name(name):
@@ -563,7 +563,7 @@ class CookieWizardView(WizardView):
     """
     A WizardView with pre-configured CookieStorage backend.
     """
-    storage_name = 'django.contrib.formtools.wizard.storage.cookie.CookieStorage'
+    storage_name = 'formwizard.storage.cookie.CookieStorage'
 
 
 class NamedUrlWizardView(WizardView):
@@ -690,11 +690,11 @@ class NamedUrlSessionWizardView(NamedUrlWizardView):
     """
     A NamedUrlWizardView with pre-configured SessionStorage backend.
     """
-    storage_name = 'django.contrib.formtools.wizard.storage.session.SessionStorage'
+    storage_name = 'formwizard.storage.session.SessionStorage'
 
 
 class NamedUrlCookieWizardView(NamedUrlWizardView):
     """
     A NamedUrlFormWizard with pre-configured CookieStorageBackend.
     """
-    storage_name = 'django.contrib.formtools.wizard.storage.cookie.CookieStorage'
+    storage_name = 'formwizard.storage.cookie.CookieStorage'

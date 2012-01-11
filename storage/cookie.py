@@ -1,8 +1,8 @@
 from django.core.exceptions import SuspiciousOperation
-from django.core.signing import BadSignature
+from formwizard.utils import BadSignature
 from django.utils import simplejson as json
 
-from django.contrib.formtools.wizard import storage
+from formwizard import storage
 
 
 class CookieStorage(storage.BaseStorage):
@@ -16,7 +16,7 @@ class CookieStorage(storage.BaseStorage):
 
     def load_data(self):
         try:
-            data = self.request.get_signed_cookie(self.prefix)
+            data = self.request.COOKIES[self.prefix] # TODO: get_signed_cookie in django 1.4
         except KeyError:
             data = None
         except BadSignature:
@@ -27,6 +27,6 @@ class CookieStorage(storage.BaseStorage):
 
     def update_response(self, response):
         if self.data:
-            response.set_signed_cookie(self.prefix, self.encoder.encode(self.data))
+            response.set_cookie(self.prefix, self.encoder.encode(self.data)) # TODO: set_signed_cookie in django 1.4
         else:
             response.delete_cookie(self.prefix)
